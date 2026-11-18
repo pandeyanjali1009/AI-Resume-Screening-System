@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Screening System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="brand">
+            <div class="logo">AI</div>
+            <div>
+                <h2>ResumeScreen</h2>
+                <p>AI Resume Screening System</p>
+            </div>
+        </div>
+        <span class="status">● System Ready</span>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <p class="eyebrow">SMART RECRUITMENT TOOL</p>
+            <h1>Find the right candidate<br>for your job.</h1>
+            <p>Enter a job description, upload resumes and compare candidates using text similarity.</p>
+        </section>
+
+        <section class="panel">
+            <h2>Screen Resumes</h2>
+            <p class="muted">Provide the job details and upload one or more resumes.</p>
+
+            <form id="screenForm">
+                <label for="jobTitle">Job Title</label>
+                <input id="jobTitle" type="text" placeholder="e.g. Python Developer">
+
+                <label for="jobDescription">Job Description <span class="required">*</span></label>
+                <textarea id="jobDescription" required
+                    placeholder="Paste the job description here. Include required skills, experience and responsibilities..."></textarea>
+
+                <label>Upload Resumes <span class="required">*</span></label>
+                <label class="upload-box" for="resumeFiles">
+                    <span class="upload-icon">↑</span>
+                    <strong>Choose resume files</strong>
+                    <span>PDF, DOCX or TXT · Multiple files supported</span>
+                    <input id="resumeFiles" type="file" accept=".pdf,.docx,.txt" multiple hidden>
+                </label>
+                <p id="fileNames" class="file-names">No files selected</p>
+
+                <button id="submitButton" type="submit">Screen Resumes</button>
+            </form>
+
+            <p id="message" class="message" role="status"></p>
+        </section>
+
+        <section id="resultsSection" class="results-section" hidden>
+            <div class="results-heading">
+                <div>
+                    <p class="eyebrow">SCREENING SUMMARY</p>
+                    <h2>Candidate Results</h2>
+                </div>
+                <span id="candidateCount" class="count"></span>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Resume</th>
+                            <th>Similarity Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody"></tbody>
+                </table>
+            </div>
+            <p class="disclaimer">
+                Similarity scores show textual similarity to the job description.
+                They are not a measure of a candidate's overall suitability.
+            </p>
+        </section>
+    </main>
+
+    <footer>AI Resume Screening System · Built with FastAPI and NLP</footer>
+    <script src="/static/script.js"></script>
+</body>
+</html>
